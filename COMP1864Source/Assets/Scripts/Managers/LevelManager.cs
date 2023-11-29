@@ -1,4 +1,5 @@
 // KHOGDEN 001115381
+using level;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
@@ -9,10 +10,8 @@ namespace managers
     {
         public static LevelManager instance;
 
-        //[Header("Generate Level Settings")]
-        //[SerializeField] int seed;
-        //[SerializeField] int gridWidthX = 100;
-        //[SerializeField] int gridWidthZ = 100;
+        [Header("Generate Settings")]
+        [SerializeField][Range(0.001f, 2f)] float tileInstantiateSpeed = 0.01f;
 
         // Called before 'void Start()'.
         private void Awake()
@@ -37,6 +36,24 @@ namespace managers
         void Update()
         {
 
+        }
+
+        // Generate a level based on inputted level grid data.
+        public void GenerateLevel(LevelGrid levelGrid)
+        {
+            StartCoroutine(IGenerateLevel(levelGrid));
+        }
+
+        // IEnumerator called by 'GenerateLevel()', so it's satisfying watching tiles generate!
+        IEnumerator IGenerateLevel(LevelGrid levelGrid)
+        {
+            List<LevelGrid.GridTile> tiles = levelGrid.GetTilesList();
+
+            for (int i = 0; i < tiles.Capacity; i++)
+            {
+                Instantiate(tiles[i].Tile.GetBlueprint(), tiles[i].Position, Quaternion.identity);
+                yield return new WaitForSeconds(tileInstantiateSpeed);
+            }
         }
     }
 }

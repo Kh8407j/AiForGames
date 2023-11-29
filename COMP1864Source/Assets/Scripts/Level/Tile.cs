@@ -5,21 +5,19 @@ using UnityEngine;
 
 namespace level
 {
-    public class Tile : MonoBehaviour
+    [CreateAssetMenu(fileName = "Tile", menuName = "Level/Tile")]
+    public class Tile : ScriptableObject
     {
+        [SerializeField] string tileName;
         [SerializeField] GameObject[] blueprints = new GameObject[1];
-
-
-        // Start is called before the first frame update
-        void Start()
+        public string GetTileName()
         {
-
+            return tileName;
         }
 
-        // Update is called once per frame
-        void Update()
+        public GameObject GetBlueprint()
         {
-
+            return blueprints[Random.Range(0, blueprints.Length)];
         }
     }
 }
