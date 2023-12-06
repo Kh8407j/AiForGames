@@ -14,6 +14,15 @@ namespace level
         [SerializeField] int widthZ = 10;
         [SerializeField] float spacing = 1f;
 
+        // List of generatable tiles and their likely chance of filling in a grid space 
+        [System.Serializable]
+        public class TileGenerateChance
+        {
+            [SerializeField] Tile tile;
+            [SerializeField][Range(0f, 1f)] float chance = 1f;
+        }
+        public List<TileGenerateChance> tileGenerateChance = new List<TileGenerateChance>();
+
         [System.Serializable]
         public class GridTile
         {
@@ -46,6 +55,13 @@ namespace level
         // Start is called before the first frame update
         void Start()
         {
+            // If a seed hasn't been given, give a random seed.
+            if (seed == 0f)
+            {
+                int randomSeedRange = 1000000;
+                seed = Random.Range(-randomSeedRange, randomSeedRange);
+            }
+
             InitializeGrid();
             LevelManager.instance.GenerateLevel(this);
         }

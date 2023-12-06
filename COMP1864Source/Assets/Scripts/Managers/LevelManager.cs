@@ -49,7 +49,7 @@ namespace managers
         {
             List<LevelGrid.GridTile> tiles = levelGrid.GetTilesList();
 
-            for (int i = 0; i < tiles.Capacity; i++)
+            for (int i = 0; i < tiles.Count; i++)
             {
                 Instantiate(tiles[i].Tile.GetBlueprint(), tiles[i].Position, Quaternion.identity);
                 yield return new WaitForSeconds(tileInstantiateSpeed);
