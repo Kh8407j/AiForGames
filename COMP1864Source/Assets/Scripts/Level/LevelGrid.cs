@@ -19,9 +19,38 @@ namespace level
         public class TileGenerateChance
         {
             [SerializeField] Tile tile;
-            [SerializeField][Range(0f, 1f)] float chance = 1f;
+            [SerializeField][Range(0f, 1f)] float chance = 0.5f;
+
+            // Reference values for where perlin noise value has to land to generate this tile.
+            private float rangeMin;
+            private float rangeMax;
+
+            public Tile GetTile()
+            {
+                return tile;
+            }
+
+            public float GetChance()
+            {
+                return chance;
+            }
+
+            public float RangeMin
+            {
+                get { return rangeMin; }
+                set { rangeMin = value; }
+            }
+
+            public float RangeMax
+            {
+                get { return rangeMax; }
+                set { rangeMax = value; }
+            }
         }
         public List<TileGenerateChance> tileGenerateChance = new List<TileGenerateChance>();
+        
+        // Range length serves as a length value for all the range min/max values.
+        private float rangeLength;
 
         [System.Serializable]
         public class GridTile
@@ -56,14 +85,39 @@ namespace level
         void Start()
         {
             // If a seed hasn't been given, give a random seed.
-            if (seed == 0f)
+            if (seed == 0)
             {
                 int randomSeedRange = 1000000;
                 seed = Random.Range(-randomSeedRange, randomSeedRange);
             }
 
+            InitializeTileGenerateChanceRanges();
             InitializeGrid();
             LevelManager.instance.GenerateLevel(this);
+        }
+
+        // Setup the min/max ranges for tile generate chances in a roulette style.
+        void InitializeTileGenerateChanceRanges()
+        {
+            for (int i = 0; i < tileGenerateChance.Count; i++)
+            {
+                TileGenerateChance t = tileGenerateChance[i];
+
+                if (i == 0)
+                {
+                    t.RangeMin = 0;
+                    t.RangeMax = t.GetChance();
+                }
+                else
+                {
+                    t.RangeMin = tileGenerateChance[i - 1].RangeMax;
+                    t.RangeMax = t.RangeMin + t.GetChance();
+                }
+
+                tileGenerateChance[i] = t;
+            }
+
+            rangeLength = tileGenerateChance[tileGenerateChance.Count - 1].RangeMax;
         }
 
         // Setup the grid for generating a level onto.
@@ -72,8 +126,27 @@ namespace level
             for (int x = 0; x < widthX; x++)
             {
                 for (int z = 0; z < widthZ; z++)
-                    gridTiles.Add(new GridTile("Grass", new Vector3(x * spacing, 0f, z * spacing)));
+                {
+                    Tile nextTile = GetTileBySeed(x, z);
+                    gridTiles.Add(new GridTile(nextTile.GetTileName(), new Vector3(x * spacing, 0f, z * spacing)));
+                }
             }
+        }
+
+        // Returns what tile in a specified grid will be generated based on seed value.
+        public Tile GetTileBySeed(int x, int z)
+        {
+            float s = Mathf.PerlinNoise(x + 0.1f - seed, z + 0.1f - seed) * rangeLength;
+
+            // Go over the list of tiles that have a chance of being generated.
+            foreach(TileGenerateChance t in tileGenerateChance)
+            {
+                // If the seed-based roulette lands on this tile, return it.
+                if (s > t.RangeMin && s < t.RangeMax)
+                    return t.GetTile();
+            }
+
+            return tileGenerateChance[0].GetTile();
         }
 
         // Find a neighbor of one tile within a inputted direction.

@@ -414,6 +414,8 @@ MonoBehaviour:
   tileGenerateChance:
   - tile: {fileID: 11400000, guid: e8e289f0012b76a419234fb831df4111, type: 2}
     chance: 1
+  - tile: {fileID: 11400000, guid: b15c840be22d1694e8a341a154e800e9, type: 2}
+    chance: 0.8
 --- !u!4 &670919033
 Transform:
   m_ObjectHideFlags: 0
