@@ -45,3 +45,4 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   tileInstantiateSpeed: 0.001
+  navPath: {fileID: 3069428167976526740, guid: 8162ce2028fa4324e9bb71c0a2a1a498, type: 3}

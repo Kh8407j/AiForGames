@@ -10,6 +10,10 @@ namespace level
     {
         [SerializeField] string tileName;
         [SerializeField] GameObject[] blueprints = new GameObject[1];
+
+        [Header("Tile Attributes")]
+        [SerializeField] bool isWalkable = true;
+
         public string GetTileName()
         {
             return tileName;
@@ -18,6 +22,11 @@ namespace level
         public GameObject GetBlueprint()
         {
             return blueprints[Random.Range(0, blueprints.Length)];
+        }
+
+        public bool IsWalkable()
+        {
+            return isWalkable;
         }
     }
 }
