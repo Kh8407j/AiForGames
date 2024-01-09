@@ -355,8 +355,9 @@ MonoBehaviour:
     chance: 0.2
   - tile: {fileID: 11400000, guid: 43a968490f3f42a4b9dde9529106a0fe, type: 2}
     chance: 0.05
+  aiSpawnTiles:
   - tile: {fileID: 11400000, guid: 8fa64dc3ca440464cb1e85c567edb61e, type: 2}
-    chance: 0.1
+  - tile: {fileID: 11400000, guid: 1a5faa5fc2845604da67088491357940, type: 2}
 --- !u!4 &670919033
 Transform:
   m_ObjectHideFlags: 0

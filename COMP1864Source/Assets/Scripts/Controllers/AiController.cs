@@ -32,8 +32,6 @@ namespace controllers
         // Update is called once per frame
         void Update()
         {
-            destination = player.transform.position;
-
             // Continuously locate a path to wherever the AI is trying to get to.
             /*if (findPathTimer == 0f)
             {
@@ -149,6 +147,11 @@ namespace controllers
                 if (scanRange > scanRangeMax)
                     break;
             }
+        }
+
+        public LayerMask GetPathNodeLayers()
+        {
+            return pathNodeLayers;
         }
     }
 }

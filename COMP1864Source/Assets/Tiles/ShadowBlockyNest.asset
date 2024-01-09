@@ -10,9 +10,9 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: fa112c8329f30cf49b508c4b01ec9b77, type: 3}
-  m_Name: BlockyNestRed
+  m_Name: ShadowBlockyNest
   m_EditorClassIdentifier: 
-  tileName: Red Blocky Nest
+  tileName: Shadow Blocky Nest
   blueprints:
-  - {fileID: 78828085432810591, guid: 6988c51a612dc6f44bcb5fa0621ecc53, type: 3}
+  - {fileID: 78828085432810591, guid: 13b12eeb942b9bf4bb9afe0c2c240db7, type: 3}
   isWalkable: 1

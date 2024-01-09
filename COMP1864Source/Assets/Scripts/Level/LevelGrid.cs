@@ -2,6 +2,7 @@
 using managers;
 using System.Collections;
 using System.Collections.Generic;
+using TreeEditor;
 using UnityEngine;
 
 namespace level
@@ -48,7 +49,28 @@ namespace level
             }
         }
         public List<TileGenerateChance> tileGenerateChance = new List<TileGenerateChance>();
-        
+
+        // Spawn tiles for AI. One of each from this list will be spawned in through perlin noise.
+        [System.Serializable]
+        public class AiSpawnTile
+        {
+            [SerializeField] Tile tile;
+            private bool addedIntoGrid;
+
+            public Tile Tile
+            {
+                get { return tile; }
+                set { tile = value; }
+            }
+
+            public bool AddedIntoGrid
+            {
+                get { return addedIntoGrid; }
+                set { addedIntoGrid = value; }
+            }
+        }
+        [SerializeField] List<AiSpawnTile> aiSpawnTiles = new List<AiSpawnTile>();
+
         // Range length serves as a length value for all the range min/max values.
         private float rangeLength;
 
@@ -57,7 +79,7 @@ namespace level
         {
             private Tile tile;
             private Vector3 pos;
-
+            private bool replaceable = true;
             public GridTile(string tileName, Vector3 tilePosition)
             {
                 tile = TileManager.instance.GetTile(tileName);
@@ -74,6 +96,12 @@ namespace level
             {
                 get { return pos; }
                 set { pos = value; }
+            }
+
+            public bool Replaceable
+            {
+                get { return replaceable; }
+                set { replaceable = value; }
             }
         }
         private List<GridTile> gridTiles = new List<GridTile>();
@@ -131,14 +159,44 @@ namespace level
                     gridTiles.Add(new GridTile(nextTile.GetTileName(), new Vector3(x * spacing, 0f, z * spacing)));
                 }
             }
+
+            // Replace some of the tiles with spawn tiles.
+            int aiSpawnIndex = 0;
+            for (int i = 0; i < gridTiles.Count; i++)
+            {
+                if (aiSpawnIndex >= aiSpawnTiles.Count)
+                    break;
+
+                float perlin = (Mathf.PerlinNoise(gridTiles[i].Position.x + 0.1f - seed, gridTiles[i].Position.z + 0.1f - seed) / 0.6f);
+                if (perlin > 0.999f && gridTiles[i].Replaceable)
+                {
+                    gridTiles[i] = new GridTile(aiSpawnTiles[aiSpawnIndex].Tile.GetTileName(), gridTiles[i].Position);
+                    gridTiles[i].Replaceable = false;
+                    aiSpawnTiles[aiSpawnIndex].AddedIntoGrid = true;
+                    aiSpawnIndex++;
+                }
+            }
+
+            // If unable to add in some of the spawn tiles, go over the grid again and replace the first replaceable tiles found instead.
+            for (int i = 0; i < gridTiles.Count; i++)
+            {
+                if (aiSpawnIndex >= aiSpawnTiles.Count)
+                    break;
+
+                if (gridTiles[i].Replaceable)
+                {
+                    gridTiles[i] = new GridTile(aiSpawnTiles[aiSpawnIndex].Tile.GetTileName(), gridTiles[i].Position);
+                    gridTiles[i].Replaceable = false;
+                    aiSpawnTiles[aiSpawnIndex].AddedIntoGrid = true;
+                    aiSpawnIndex++;
+                }
+            }
         }
 
         // Returns what tile in a specified grid will be generated based on seed value.
         public Tile GetTileBySeed(int x, int z)
         {
             float s = (Mathf.PerlinNoise(x + 0.1f - seed, z + 0.1f - seed) / 0.6f);
-            Debug.Log("Perlin: " + s.ToString("0.00"));
-
 
             // Go over the list of tiles that have a chance of being generated.
             foreach (TileGenerateChance t in tileGenerateChance)

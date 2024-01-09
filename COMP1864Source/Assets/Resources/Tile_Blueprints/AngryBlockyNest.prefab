@@ -14,7 +14,7 @@ GameObject:
   - component: {fileID: 4752147438143694438}
   - component: {fileID: 7101811770479408898}
   m_Layer: 0
-  m_Name: BlockyNestRed
+  m_Name: AngryBlockyNest
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0

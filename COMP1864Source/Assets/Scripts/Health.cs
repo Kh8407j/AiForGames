@@ -9,7 +9,7 @@ namespace entity
 {
     public class Health : MonoBehaviour
     {
-        [SerializeField] float health = 100f;
+        private float health = 100f;
         [SerializeField] float maxHealth = 100f;
 
         private bool dead;

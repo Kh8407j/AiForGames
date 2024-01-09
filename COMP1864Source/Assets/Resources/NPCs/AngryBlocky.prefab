@@ -177,10 +177,12 @@ GameObject:
   - component: {fileID: 6843341455027385519}
   - component: {fileID: 4617298943664170300}
   - component: {fileID: 9019790994547474409}
+  - component: {fileID: -2461392367376268838}
+  - component: {fileID: 4280899874238196829}
   - component: {fileID: 6838094486803190657}
   - component: {fileID: -6391155394479842492}
   m_Layer: 0
-  m_Name: RedBlocky
+  m_Name: AngryBlocky
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -233,6 +235,34 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   lerpDamp: 5
   moveTime: 0.4
+--- !u!114 &-2461392367376268838
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8272507441445743241}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 7329eb9f644470e499c1773309622943, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  maxHealth: 100
+--- !u!114 &4280899874238196829
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8272507441445743241}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 87b7763455c7a804a8f79216d8ea2bd4, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  behaviorState: 0
+  patrolTime: 10
+  provokeTime: 20
 --- !u!65 &6838094486803190657
 BoxCollider:
   m_ObjectHideFlags: 0
