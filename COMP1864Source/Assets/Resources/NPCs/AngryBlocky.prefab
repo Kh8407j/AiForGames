@@ -261,7 +261,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   behaviorState: 0
-  patrolTime: 10
+  patrolTime: 1
   provokeTime: 20
 --- !u!65 &6838094486803190657
 BoxCollider:

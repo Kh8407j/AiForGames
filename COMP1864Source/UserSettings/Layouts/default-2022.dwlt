@@ -19,7 +19,7 @@ MonoBehaviour:
     width: 2560
     height: 1349
   m_ShowMode: 4
-  m_Title: Hierarchy
+  m_Title: Inspector
   m_RootView: {fileID: 3}
   m_MinSize: {x: 875, y: 300}
   m_MaxSize: {x: 10000, y: 10000}
@@ -193,7 +193,7 @@ MonoBehaviour:
   m_MinSize: {x: 200, y: 50}
   m_MaxSize: {x: 16192, y: 8096}
   vertical: 0
-  controlID: 4788
+  controlID: 19
 --- !u!114 &9
 MonoBehaviour:
   m_ObjectHideFlags: 52
@@ -293,8 +293,8 @@ MonoBehaviour:
     y: 0
     width: 447
     height: 1299
-  m_MinSize: {x: 276, y: 71}
-  m_MaxSize: {x: 4001, y: 4021}
+  m_MinSize: {x: 275, y: 50}
+  m_MaxSize: {x: 4000, y: 4000}
   m_ActualView: {fileID: 18}
   m_Panes:
   - {fileID: 18}
@@ -644,9 +644,9 @@ MonoBehaviour:
   m_PlayAudio: 0
   m_AudioPlay: 0
   m_Position:
-    m_Target: {x: 50.04648, y: -99.091225, z: 66.09631}
+    m_Target: {x: 14.337133, y: -33.87481, z: 41.93239}
     speed: 2
-    m_Value: {x: 50.04648, y: -99.091225, z: 66.09631}
+    m_Value: {x: 14.337133, y: -33.87481, z: 41.93239}
   m_RenderMode: 0
   m_CameraMode:
     drawMode: 0
@@ -692,13 +692,13 @@ MonoBehaviour:
     m_GridAxis: 1
     m_gridOpacity: 0.5
   m_Rotation:
-    m_Target: {x: -0.43938714, y: -0.29498482, z: 0.15538195, w: -0.8341622}
+    m_Target: {x: -0.44596267, y: -0.015575801, z: 0.007769625, w: -0.8949142}
     speed: 2
-    m_Value: {x: -0.43937677, y: -0.29497784, z: 0.15537828, w: -0.8341425}
+    m_Value: {x: -0.44594997, y: -0.015575358, z: 0.007769404, w: -0.8948887}
   m_Size:
-    m_Target: 74.87422
+    m_Target: 45.491096
     speed: 2
-    m_Value: 74.87422
+    m_Value: 45.491096
   m_Ortho:
     m_Target: 0
     speed: 2
@@ -761,9 +761,9 @@ MonoBehaviour:
   m_SceneHierarchy:
     m_TreeViewState:
       scrollPos: {x: 0, y: 0}
-      m_SelectedIDs: 
-      m_LastClickedID: 0
-      m_ExpandedIDs: 6c80feff12a4fefff4ffffff
+      m_SelectedIDs: e6c00000
+      m_LastClickedID: 49382
+      m_ExpandedIDs: da66f6ff7ea1feffaaa3feff
       m_RenameOverlay:
         m_UserAcceptedRename: 0
         m_Name: 
@@ -932,7 +932,7 @@ MonoBehaviour:
     m_SkipHidden: 0
     m_SearchArea: 1
     m_Folders:
-    - Assets/Scripts/AiBehaviour
+    - Assets/Tiles
     m_Globs: []
     m_OriginalText: 
     m_ImportLogFlags: 0
@@ -940,30 +940,30 @@ MonoBehaviour:
   m_ViewMode: 1
   m_StartGridSize: 64
   m_LastFolders:
-  - Assets/Scripts/AiBehaviour
+  - Assets/Tiles
   m_LastFoldersGridSize: -1
   m_LastProjectPath: C:\Users\dawn1\OneDrive\Documents\Desktop\AiForGames\COMP1864Source
   m_LockTracker:
     m_IsLocked: 0
   m_FolderTreeState:
-    scrollPos: {x: 0, y: 85}
-    m_SelectedIDs: aac30000
-    m_LastClickedID: 50090
+    scrollPos: {x: 0, y: 229}
+    m_SelectedIDs: 42060000
+    m_LastClickedID: 1602
     m_ExpandedIDs: 00000000fe0500004e0600005e0600001607000000ca9a3bffffff7f
     m_RenameOverlay:
       m_UserAcceptedRename: 0
-      m_Name: Managers
-      m_OriginalName: Managers
+      m_Name: 
+      m_OriginalName: 
       m_EditFieldRect:
         serializedVersion: 2
         x: 0
         y: 0
         width: 0
         height: 0
-      m_UserData: 2018
+      m_UserData: 0
       m_IsWaitingForDelay: 0
       m_IsRenaming: 0
-      m_OriginalEventType: 0
+      m_OriginalEventType: 11
       m_IsRenamingFilename: 1
       m_ClientGUIView: {fileID: 11}
     m_SearchString: 

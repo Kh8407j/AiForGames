@@ -16,6 +16,7 @@ namespace controllers
         private float hor;
         private float ver;
 
+        [SerializeField] bool faceForward = true;
         [SerializeField][Range(0f, 2f)] float moveTime = 0.4f;
         private float moveTimer;
 
@@ -64,7 +65,8 @@ namespace controllers
             targetPos = calc;
 
             // Make the motor transform face towards where it's moving towards.
-            transform.LookAt(calc);
+            if(faceForward)
+                transform.LookAt(calc);
         }
 
         public float Hor

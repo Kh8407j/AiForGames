@@ -1,0 +1,18 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: fa112c8329f30cf49b508c4b01ec9b77, type: 3}
+  m_Name: MilkyBlockyNest
+  m_EditorClassIdentifier: 
+  tileName: Milky Blocky Nest
+  blueprints:
+  - {fileID: 78828085432810591, guid: 102515f1e6bcb7d469923bf27252720e, type: 3}
+  isWalkable: 1
