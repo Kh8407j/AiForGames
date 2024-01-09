@@ -55,12 +55,16 @@ namespace controllers
         // Make the motor move.
         public void Move()
         {
+            // Calculate and set the target position to be where the motor is trying to move to.
             Vector3 calc = currentPos + new Vector3(hor, 0f, ver);
             calc.x = Mathf.RoundToInt(calc.x);
             calc.y = Mathf.RoundToInt(calc.y);
             calc.z = Mathf.RoundToInt(calc.z);
 
             targetPos = calc;
+
+            // Make the motor transform face towards where it's moving towards.
+            transform.LookAt(calc);
         }
 
         public float Hor

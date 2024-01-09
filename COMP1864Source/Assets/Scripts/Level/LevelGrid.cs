@@ -136,13 +136,15 @@ namespace level
         // Returns what tile in a specified grid will be generated based on seed value.
         public Tile GetTileBySeed(int x, int z)
         {
-            float s = Mathf.PerlinNoise(x + 0.1f - seed, z + 0.1f - seed) * rangeLength;
+            float s = (Mathf.PerlinNoise(x + 0.1f - seed, z + 0.1f - seed) / 0.6f);
+            Debug.Log("Perlin: " + s.ToString("0.00"));
+
 
             // Go over the list of tiles that have a chance of being generated.
-            foreach(TileGenerateChance t in tileGenerateChance)
+            foreach (TileGenerateChance t in tileGenerateChance)
             {
                 // If the seed-based roulette lands on this tile, return it.
-                if (s > t.RangeMin && s < t.RangeMax)
+                if (s > (t.RangeMin / rangeLength) && s < (t.RangeMax / rangeLength))
                     return t.GetTile();
             }
 

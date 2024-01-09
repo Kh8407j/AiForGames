@@ -1,4 +1,5 @@
 // KHOGDEN 001115381
+using AI;
 using level;
 using System.Collections;
 using System.Collections.Generic;
@@ -48,9 +49,7 @@ namespace managers
 
             // Initialize tile attributes.
             if(t.IsWalkable())
-            {
-                Instantiate(navPath, pos + (Vector3.up * 2f), Quaternion.identity, obj.transform);
-            }
+                Instantiate(navPath, pos + (Vector3.up * 1.05f), Quaternion.identity, obj.transform);
         }
 
         // Generate a level based on inputted level grid data.
@@ -73,6 +72,15 @@ namespace managers
 
                 yield return new WaitForSeconds(tileInstantiateSpeed);
             }
+
+            // Once the level has been generated, setup the path node attributes.
+            PathNode[] pathNodes = FindObjectsOfType<PathNode>();
+            foreach(PathNode p in pathNodes)
+                p.FindNeighbors();
+
+            InteractiveTile[] interactiveTiles = FindObjectsOfType<InteractiveTile>();
+            foreach (InteractiveTile t in interactiveTiles)
+                t.Initialize();
         }
     }
 }
