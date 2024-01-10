@@ -9,7 +9,7 @@ namespace AIBehavior
 {
     public class AiBehavior : MonoBehaviour
     {
-        private enum BehaviorState { patrol, provoke, flee };
+        public enum BehaviorState { patrol, provoke, flee };
         [SerializeField] BehaviorState behaviorState;
 
         // How long the AI stays in patrol state before it switches to provoke.
@@ -79,6 +79,27 @@ namespace AIBehavior
                 controller.SetDestination(patrolDestination.Pos().x, patrolDestination.Pos().y, patrolDestination.Pos().z);
             else if (behaviorState == BehaviorState.provoke)
                 Provoke();
+
+            // Make the AI head the opposite way away from the player when fleeing.
+            if (behaviorState == BehaviorState.flee)
+            {
+                Vector3 plrPos = player.position;
+                Vector3 currentPos = transform.position;
+                Vector3 calcDestination = plrPos;
+                float fleeDistance = 20f;
+
+                if (currentPos.x > plrPos.x)
+                    calcDestination.x += fleeDistance;
+                else
+                    calcDestination.x -= fleeDistance;
+
+                if (currentPos.z > plrPos.z)
+                    calcDestination.z += fleeDistance;
+                else
+                    calcDestination.z -= fleeDistance;
+
+                controller.SetDestination(calcDestination.x, calcDestination.y, calcDestination.z);
+            }
         }
 
         public virtual void Initialize()
@@ -96,6 +117,12 @@ namespace AIBehavior
         public virtual void Provoke()
         {
 
+        }
+
+        public BehaviorState Behavior
+        {
+            get {  return behaviorState; }
+            set { behaviorState = value; }
         }
 
         public AiController GetController()

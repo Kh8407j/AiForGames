@@ -2,7 +2,6 @@
 using managers;
 using System.Collections;
 using System.Collections.Generic;
-using TreeEditor;
 using UnityEngine;
 
 namespace level
@@ -112,6 +111,9 @@ namespace level
         // Start is called before the first frame update
         void Start()
         {
+            // Collect the scene-transferred inputted seed from the game manager.
+            seed = GameManager.instance.InputtedSeed;
+
             // If a seed hasn't been given, give a random seed.
             if (seed == 0)
             {
@@ -162,13 +164,13 @@ namespace level
 
             // Replace some of the tiles with spawn tiles.
             int aiSpawnIndex = 0;
-            for (int i = 0; i < gridTiles.Count; i++)
+            for (int i = gridTiles.Count - 1; i >= 0; i--)
             {
                 if (aiSpawnIndex >= aiSpawnTiles.Count)
                     break;
 
                 float perlin = (Mathf.PerlinNoise(gridTiles[i].Position.x + 0.1f - seed, gridTiles[i].Position.z + 0.1f - seed) / 0.6f);
-                if (perlin > 0.999f && gridTiles[i].Replaceable)
+                if (perlin > 0.99f && gridTiles[i].Replaceable)
                 {
                     gridTiles[i] = new GridTile(aiSpawnTiles[aiSpawnIndex].Tile.GetTileName(), gridTiles[i].Position);
                     gridTiles[i].Replaceable = false;
@@ -178,7 +180,7 @@ namespace level
             }
 
             // If unable to add in some of the spawn tiles, go over the grid again and replace the first replaceable tiles found instead.
-            for (int i = 0; i < gridTiles.Count; i++)
+            for (int i = gridTiles.Count - 1; i >= 0; i--)
             {
                 if (aiSpawnIndex >= aiSpawnTiles.Count)
                     break;

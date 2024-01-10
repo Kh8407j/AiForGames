@@ -8,6 +8,7 @@ namespace managers
     public class GameManager : MonoBehaviour
     {
         public static GameManager instance;
+        [SerializeField] int inputtedSeed;
 
         // Called before 'void Start()'.
         private void Awake()
@@ -22,16 +23,10 @@ namespace managers
                 Destroy(gameObject);
         }
 
-        // Start is called before the first frame update
-        void Start()
+        public int InputtedSeed
         {
-
-        }
-
-        // Update is called once per frame
-        void Update()
-        {
-
+            get { return inputtedSeed; }
+            set { inputtedSeed = value; }
         }
     }
 }

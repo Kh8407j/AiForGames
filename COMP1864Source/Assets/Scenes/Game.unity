@@ -357,9 +357,13 @@ MonoBehaviour:
     chance: 0.07
   aiSpawnTiles:
   - tile: {fileID: 11400000, guid: 8fa64dc3ca440464cb1e85c567edb61e, type: 2}
+  - tile: {fileID: 11400000, guid: c3a812dd90975ba4fbb834742a7ea9f1, type: 2}
   - tile: {fileID: 11400000, guid: 504ebacd91337fa4bb5e73aa91523c62, type: 2}
+  - tile: {fileID: 11400000, guid: c3a812dd90975ba4fbb834742a7ea9f1, type: 2}
   - tile: {fileID: 11400000, guid: 1a5faa5fc2845604da67088491357940, type: 2}
+  - tile: {fileID: 11400000, guid: c3a812dd90975ba4fbb834742a7ea9f1, type: 2}
   - tile: {fileID: 11400000, guid: 0401c4d45e490a249bdfa15a5afac4f3, type: 2}
+  - tile: {fileID: 11400000, guid: c3a812dd90975ba4fbb834742a7ea9f1, type: 2}
 --- !u!4 &670919033
 Transform:
   m_ObjectHideFlags: 0

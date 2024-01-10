@@ -14,19 +14,14 @@ namespace managers
         // Called before 'void Start()'.
         private void Awake()
         {
-            instance = this;
-        }
-
-        // Start is called before the first frame update
-        void Start()
-        {
-
-        }
-
-        // Update is called once per frame
-        void Update()
-        {
-
+            // Let's manager transfers between scenes while avoiding duplicates.
+            if (instance == null)
+            {
+                instance = this;
+                DontDestroyOnLoad(gameObject);
+            }
+            else if (instance != this)
+                Destroy(gameObject);
         }
 
         // Method to get a tile from the list of usable tiles.

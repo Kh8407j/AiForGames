@@ -15,4 +15,4 @@ MonoBehaviour:
   tileName: Milk Spawn
   blueprints:
   - {fileID: 78828085432810591, guid: cd14478faf8bcc449ad83f803e5b7b23, type: 3}
-  isWalkable: 0
+  isWalkable: 1

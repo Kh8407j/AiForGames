@@ -234,6 +234,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   lerpDamp: 5
+  faceForward: 1
   moveTime: 0.4
 --- !u!114 &-2461392367376268838
 MonoBehaviour:
@@ -261,8 +262,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   behaviorState: 0
-  patrolTime: 1
-  provokeTime: 20
+  patrolTime: 10
+  provokeTime: 30
 --- !u!65 &6838094486803190657
 BoxCollider:
   m_ObjectHideFlags: 0

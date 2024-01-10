@@ -5,6 +5,7 @@ TagManager:
   serializedVersion: 2
   tags:
   - PathNode
+  - Milk
   layers:
   - Default
   - TransparentFX
